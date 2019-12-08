@@ -1,43 +1,36 @@
 import React from 'react';
+import styles from './style/style'
 import {
   AppRegistry,
-  StyleSheet,
   Text,
   View,
+  VrButton
 } from 'react-360';
 
 export default class globalWarming_v1 extends React.Component {
   render() {
     return (
       <View style={styles.panel}>
-        <View style={styles.greetingBox}>
-          <Text style={styles.greeting}>
-            Welcome to React 360
+        <View style={styles.titleBox}>
+          <Text style={styles.title}>
+            GLOBAL WARMING 
+            </Text>
+            <Text style={styles.title}>
+            INTERACTIVE QUIZ
           </Text>
+        </View>
+         <View style={styles.infoBox}>
+        <Text style={styles.infoText}>
+          Take a look around & stare at the enter box when your ready!
+        </Text>
+        <VrButton style={styles.enterButton}>
+        <Text style={styles.enterButtonText}>ENTER</Text>
+        </VrButton>
         </View>
       </View>
     );
   }
 };
 
-const styles = StyleSheet.create({
-  panel: {
-    // Fill the entire surface
-    width: 1000,
-    height: 600,
-    backgroundColor: 'rgba(255, 255, 255, 0.4)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  greetingBox: {
-    padding: 20,
-    backgroundColor: '#000000',
-    borderColor: '#639dda',
-    borderWidth: 2,
-  },
-  greeting: {
-    fontSize: 30,
-  },
-});
 
 AppRegistry.registerComponent('globalWarming_v1', () => globalWarming_v1);
