@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
 
   },
   infoBox:{
+    
     width: "100%",
     padding: 20,
   },
