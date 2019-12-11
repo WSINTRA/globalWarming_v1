@@ -4,6 +4,7 @@ import SimpleRaycaster from "simple-raycaster";///////////
 import WebVRPolyfill from 'webvr-polyfill';    ////// this is for mobile web browsing
 const polyfill = new WebVRPolyfill();          //////////
 
+
 function init(bundle, parent, options = {}) {
   r360 = new ReactInstance(bundle, parent, {
     // Add custom options here
@@ -25,8 +26,8 @@ function init(bundle, parent, options = {}) {
   r360.compositor.setBackground(r360.getAssetURL('mess.jpg'));
 
     powerStationPanel = new Surface(
-    800,
-    800,
+    100,
+    100,
     Surface.SurfaceShape.Flat
   )
 
@@ -37,13 +38,19 @@ function init(bundle, parent, options = {}) {
 }
 
 class surfaceModule extends Module{
+
   constructor(){
     super('surfaceModule');
   }
 
-  powerStation(){
+  resizeSurface(width, height, id){
+    if (id==="powerStation"){
+      powerStationPanel.resize(width, height)
+    }
+  }
+  powerStation(props){
     r360.renderToSurface(
-    r360.createRoot('InfoPanel', { /* initial props */ }),
+    r360.createRoot('InfoPanel', { id:"powerStation", panel:props }),
     powerStationPanel
   )}
 

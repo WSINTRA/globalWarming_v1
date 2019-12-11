@@ -35,14 +35,15 @@ const styles = StyleSheet.create({
 
   },
   infoBox:{
-    
+    backgroundColor: '#FFFFFF',
     width: "100%",
     padding: 20,
   },
   infoText: {
-    padding: 20,
+    padding: 2,
     fontSize: 30,
-    textAlign: 'center',
+    textAlign: 'left',
+    justifyContent: 'flex-start',
     color: '#201933'
   }
 });
