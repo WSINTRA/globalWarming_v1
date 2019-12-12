@@ -23,10 +23,12 @@ state = {
 setGazed=(Portals)=>{
 
 Environment.setBackgroundImage(asset('powerStationLake.jpg'))
-
 //Need to destroy the intro panel once the enter button is clicked
-surfaceModule.destroyPanel('IntroPage')
-surfaceModule.powerStation({...Portals.Portal_1})
+surfaceModule.destroyPanel([1]) //Takes an array of r360 _rootSurfaces
+surfaceModule.powerStationInfo({...Portals, })
+surfaceModule.lakeInfo({...Portals, })
+surfaceModule.portalButtonGaze()
+
 }
 
   render() {

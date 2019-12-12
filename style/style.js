@@ -28,19 +28,35 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#000000'
   },
+  portalButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(47,0,192,0.5)',
+    width: 300,
+    height: 300
+  },
+  portalButtonText: {
+    padding: 10,
+    fontSize: 30,
+    textAlign: 'center',
+    color: '#FFFFFF'
+  },
   title: {
     fontSize: 60,
     textAlign: 'center',
     color: '#201933'
 
   },
+  displayPanel:{
+    width: "100%",
+    height: "100%",
+  },
   infoBox:{
     backgroundColor: '#FFFFFF',
-    width: "100%",
-    padding: 20,
   },
   infoText: {
-    padding: 2,
+    padding: 20,
+    
     fontSize: 30,
     textAlign: 'left',
     justifyContent: 'flex-start',

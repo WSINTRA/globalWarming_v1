@@ -15,17 +15,21 @@ function init(bundle, parent, options = {}) {
     cursorVisibility: "visible",
     ...options,
   });
+
   r360.controls.addRaycaster(SimpleRaycaster);
   r360.compositor.setCursorVisibility('visible');
+
   // Render your app content to the default cylinder surface
   surface = r360.getDefaultSurface();
+
   IntroPage = r360.renderToSurface(
     r360.createRoot('IntroPage'),
     surface
   );
+
   r360.compositor.setBackground(r360.getAssetURL('mess.jpg'));
 
-    powerStationPanel = new Surface(
+  powerStationPanel = new Surface(
     100,
     100,
     Surface.SurfaceShape.Flat
@@ -34,6 +38,26 @@ function init(bundle, parent, options = {}) {
   powerStationPanel.setAngle(
     4.5, /* yaw angle */
     0.3 /* pitch angle */
+  );
+  
+  portalButton = new Surface(
+    300,
+    300,
+    Surface.SurfaceShape.Flat
+  )
+  portalButton.setAngle(
+    3,
+    0.1
+    )
+
+  lakePanel = new Surface(
+    100,
+    100,
+    Surface.SurfaceShape.Flat
+  )
+  lakePanel.setAngle(
+    1, /* yaw angle */
+    0 /* pitch angle */
   );
 }
 
@@ -44,18 +68,39 @@ class surfaceModule extends Module{
   }
 
   resizeSurface(width, height, id){
-    if (id==="powerStation"){
-      powerStationPanel.resize(width, height)
+
+    switch(id){
+      case "Portal_1":
+      return powerStationPanel.resize(width, height)
+      case "Portal_2":
+      return lakePanel.resize(width, height)
     }
   }
-  powerStation(props){
+
+  powerStationInfo(props){
     r360.renderToSurface(
-    r360.createRoot('InfoPanel', { id:"powerStation", panel:props }),
+    r360.createRoot('InfoPanel', { id:"Portal_1", panel:props }),
     powerStationPanel
   )}
 
+  lakeInfo(props){
+    r360.renderToSurface(
+    r360.createRoot('InfoPanel', { id:"Portal_2", panel:props }),
+    lakePanel
+  )}
+
+  portalButtonGaze(props){
+    r360.renderToSurface(
+    r360.createRoot('PortalButton', {id:"Portal_2", panel:props }) ,
+    portalButton
+  )}
+
+  
+
   destroyPanel(somePanel){
-    r360.detachRoot(window[somePanel]) //evaluates the incoming string to its value
+   for (let i = somePanel.length - 1; i >= 0; i--) {
+     r360.detachRoot(somePanel[i])
+   }
   }
 
 }

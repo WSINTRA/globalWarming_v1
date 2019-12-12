@@ -31,17 +31,26 @@ _changeSurfaceDimension(width, height, id){
 
 	onHoverText=(props)=>{
 		
-		let text = props.panel.infoText
-		this._changeSurfaceDimension(900,900, props.id)
-
+		let text = props.panel[`${props.id}`].infoText
+		let title = props.panel[`${props.id}`].name
+		
+		
 		this.setState({
 			text: text,
+			title: title,
 			img: {
-				name: null,
-				width:100,
-				height:100
+				name: 'info.png',
+				width:0,
+				height:0
 			}
 		})
+
+		switch(props.id){
+		      case "Portal_1":
+		      return this._changeSurfaceDimension(900,900, props.id)
+		      case "Portal_2":
+		      return this._changeSurfaceDimension(1000,900, props.id)
+		    }
 	}
 	OnHoverExit=(props)=>{
 		this._changeSurfaceDimension(100,100, props.id)
@@ -58,20 +67,20 @@ _changeSurfaceDimension(width, height, id){
 		let { img } = this.state;
 		
 	return (
-		  <View style={styles.displayPanel}
-           >
-
-        <Image 
-        hitSlop={1800}
-        onEnter={()=>this.onHoverText(this.props)} 
-        	onExit={()=>this.OnHoverExit(this.props)}
-        	source={asset(`${img.name}`)} style={{width: img.width, height: img.height}} />
-        <View style={styles.infoBox}>
-         {console.log(this.props.panel, "props")}
-          <Text style={styles.infoText}>
-            {this.state.text}
-          </Text>
-        </View>
+		  <View style={styles.displayPanel} >
+		        <Image 
+		        hitSlop={1800}
+		        onEnter={()=>this.onHoverText(this.props)} 
+	        	onExit={()=>this.OnHoverExit(this.props)}
+	        	source={asset(`${img.name}`)} 
+	        	style={{width: img.width, height: img.height}} 
+		        />
+	        <View style={styles.infoBox}>
+	          <Text style={styles.infoText}>
+	          {this.state.title + "\n"}
+	            {this.state.text}
+	          </Text>
+	        </View>
       </View>
 	)
 	}
