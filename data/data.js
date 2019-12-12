@@ -24,7 +24,24 @@ const Portals = {
       \n\
       They help to prevent flooding and harness \n\
       the renewable power of water to produce electricity"
-    }
+    },
+  Portal_3:
+  {
+    name: "Plastic Bottles",
+    infoText: "Did you know that in the US we throw away \n\
+    35 billion plastic water bottles every year.\n\
+    Interestingly it takes between 500 and 1000 years\n\
+    for plastic to degrade.\n\n\
+      A whole lot of that plastic makes it's way into waterways\n\
+    like this one."
+  },
+  Portal_4:
+  {
+    name: "Cement Structures",
+    infoText:"Did you know that the cement industry is a major producer\n\
+    of carbon diozide; which is one of the most potent greenhouse gases\n\
+    Click below to find out more"
+  }
 
 }
 

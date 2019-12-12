@@ -10,6 +10,7 @@ import {
   Image
 } from 'react-360';
 import GazeButton from 'react-360-gaze-button';
+import Portals from '../data/data'
 
 const surfaceModule = NativeModules.surfaceModule;
 
@@ -21,16 +22,18 @@ class PortalButton extends React.Component {
 
 state = {
   gazed: false,
+  portal: Portals.Intro
 }
-setGazed=()=>{
-	console.log("destroy ")
+setGazed=(Portals)=>{
+	console.log("destroy ", Portals)
 	
 surfaceModule.destroyPanel([11,21,31])//These are the panel numbers from r360 _rootSurfaces
 Environment.setBackgroundImage(asset('spillway.jpg'))
+surfaceModule.plasticBottleInfo({...Portals})
 
 }
   render() {
-   
+   const { portal } = this.state
     return (
 
       <View>
@@ -38,7 +41,7 @@ Environment.setBackgroundImage(asset('spillway.jpg'))
         
         <GazeButton 
         duration={3000}
-        onClick={()=>this.setGazed()}
+        onClick={()=>this.setGazed(Portals)}
         render={ (remainingTime, isGazed) => (
           <View>
             <Text style={styles.portalButtonText}>

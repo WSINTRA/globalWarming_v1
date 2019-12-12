@@ -59,6 +59,16 @@ function init(bundle, parent, options = {}) {
     1, /* yaw angle */
     0 /* pitch angle */
   );
+
+  plasticBottlePanel = new Surface(
+    100,
+    100,
+    Surface.SurfaceShape.Flat
+  )
+  plasticBottlePanel.setAngle(
+    1,
+    -0.6
+  );
 }
 
 class surfaceModule extends Module{
@@ -74,6 +84,8 @@ class surfaceModule extends Module{
       return powerStationPanel.resize(width, height)
       case "Portal_2":
       return lakePanel.resize(width, height)
+      case "Portal_3":
+      return plasticBottlePanel.resize(width, height)
     }
   }
 
@@ -91,11 +103,16 @@ class surfaceModule extends Module{
 
   portalButtonGaze(props){
     r360.renderToSurface(
-    r360.createRoot('PortalButton', {id:"Portal_2", panel:props }) ,
+    r360.createRoot('PortalButton', {id:"Button", panel:props }),
     portalButton
   )}
 
-  
+  plasticBottleInfo(props){
+    r360.renderToSurface(
+      r360.createRoot('InfoPanel',{id:"Portal_3", panel:props} ),
+      plasticBottlePanel
+    )
+  }
 
   destroyPanel(somePanel){
    for (let i = somePanel.length - 1; i >= 0; i--) {

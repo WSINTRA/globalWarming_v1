@@ -50,6 +50,8 @@ _changeSurfaceDimension(width, height, id){
 		      return this._changeSurfaceDimension(900,900, props.id)
 		      case "Portal_2":
 		      return this._changeSurfaceDimension(1000,900, props.id)
+		      case "Portal_3":
+		      return this._changeSurfaceDimension(1000,900, props.id)
 		    }
 	}
 	OnHoverExit=(props)=>{
@@ -69,6 +71,7 @@ _changeSurfaceDimension(width, height, id){
 	return (
 		  <View style={styles.displayPanel} >
 		        <Image 
+		        
 		        hitSlop={1800}
 		        onEnter={()=>this.onHoverText(this.props)} 
 	        	onExit={()=>this.OnHoverExit(this.props)}
