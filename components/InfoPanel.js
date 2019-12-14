@@ -19,8 +19,8 @@ class InfoPanel extends React.Component {
 		gazed: false,
 		img: {
 			name: 'info.png',
-			width: 100,
-			height: 100,
+			width: 80,
+			height: 80,
 		},
 		text: ""
 	}
@@ -52,16 +52,22 @@ _changeSurfaceDimension(width, height, id){
 		      return this._changeSurfaceDimension(1000,900, props.id)
 		      case "Portal_3":
 		      return this._changeSurfaceDimension(1000,900, props.id)
+		      case "Portal_4":
+		      return this._changeSurfaceDimension(1000,900, props.id)
+		      case "Portal_5":
+		      return this._changeSurfaceDimension(1100,1100, props.id)
+		      case "Portal_6":
+		      return this._changeSurfaceDimension(1100,1100, props.id)
 		    }
 	}
 	OnHoverExit=(props)=>{
-		this._changeSurfaceDimension(100,100, props.id)
+		this._changeSurfaceDimension(140,140, props.id)
 		this.setState({
 					text: "",
 					img: {
 							name: 'info.png',
-							width:100,
-							height:100
+							width:80,
+							height:80
 						}
 				})
 	}
@@ -70,7 +76,9 @@ _changeSurfaceDimension(width, height, id){
 		
 	return (
 		  <View style={styles.displayPanel} >
-		        <Image 
+		        
+	        <View style={styles.infoBox}>
+	        <Image 
 		        
 		        hitSlop={1800}
 		        onEnter={()=>this.onHoverText(this.props)} 
@@ -78,7 +86,6 @@ _changeSurfaceDimension(width, height, id){
 	        	source={asset(`${img.name}`)} 
 	        	style={{width: img.width, height: img.height}} 
 		        />
-	        <View style={styles.infoBox}>
 	          <Text style={styles.infoText}>
 	          {this.state.title + "\n"}
 	            {this.state.text}

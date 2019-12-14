@@ -40,7 +40,23 @@ const Portals = {
     name: "Cement Structures",
     infoText:"Did you know that the cement industry is a major producer\n\
     of carbon diozide; which is one of the most potent greenhouse gases\n\
-    Click below to find out more"
+    Gaze at the button to find out more about construction"
+  },
+  Portal_5:
+  {
+    name: "Wooden Construction",
+    infoText: "Did you know that wood from managed forests actually stores carbon\n\
+     as opposed to emitting it: as trees grow, they absorb CO2 from the atmosphere.\n\n\
+     Structures using wooden materials also tend to be quicker and easier to build,\n\
+      therefore reducing labour costs, transport fuel and on-site energy use. "
+  },
+  Portal_6:
+  {
+    name: "Demolition",
+    infoText: "Did you know that concrete dust released by building demolition \n\
+    and natural disasters can be a major source of dangerous air pollution \n\n\
+    In the year 1993 a US government funded report approximated that\n\
+    almost 17% of worldwide landfill was a by-product of concrete based waste."
   }
 
 }

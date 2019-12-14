@@ -41,6 +41,19 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#FFFFFF'
   },
+  portalButton2: {
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    backgroundColor: 'rgba(47,0,192,0.5)',
+    width: 440,
+    height: 100
+  },
+  portalButton2Text: {
+    padding: 10,
+    fontSize: 30,
+    textAlign: 'center',
+    color: '#FFFFFF'
+  },
   title: {
     fontSize: 60,
     textAlign: 'center',
@@ -48,15 +61,15 @@ const styles = StyleSheet.create({
 
   },
   displayPanel:{
-    width: "100%",
-    height: "100%",
+   
   },
   infoBox:{
+    padding: 10,
+    borderRadius: 30,
     backgroundColor: '#FFFFFF',
   },
   infoText: {
-    padding: 20,
-    
+
     fontSize: 30,
     textAlign: 'left',
     justifyContent: 'flex-start',

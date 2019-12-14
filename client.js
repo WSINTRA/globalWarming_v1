@@ -1,8 +1,9 @@
 import React from 'react';
 import {ReactInstance, Module, Surface} from 'react-360-web';
 import SimpleRaycaster from "simple-raycaster";///////////
-import WebVRPolyfill from 'webvr-polyfill';    ////// this is for mobile web browsing
-const polyfill = new WebVRPolyfill();          //////////
+// import WebVRPolyfill from 'webvr-polyfill';
+
+// const polyfill = new WebVRPolyfill();
 
 
 function init(bundle, parent, options = {}) {
@@ -15,10 +16,7 @@ function init(bundle, parent, options = {}) {
     cursorVisibility: "visible",
     ...options,
   });
-
-  r360.controls.addRaycaster(SimpleRaycaster);
-  r360.compositor.setCursorVisibility('visible');
-
+  
   // Render your app content to the default cylinder surface
   surface = r360.getDefaultSurface();
 
@@ -27,17 +25,20 @@ function init(bundle, parent, options = {}) {
     surface
   );
 
+
   r360.compositor.setBackground(r360.getAssetURL('mess.jpg'));
+  r360.controls.clearRaycasters();
+  r360.controls.addRaycaster(SimpleRaycaster);
 
   powerStationPanel = new Surface(
-    100,
-    100,
+    140,
+    140,
     Surface.SurfaceShape.Flat
   )
 
   powerStationPanel.setAngle(
-    4.5, /* yaw angle */
-    0.3 /* pitch angle */
+    
+  -1.99,0.29,0
   );
   
   portalButton = new Surface(
@@ -51,8 +52,8 @@ function init(bundle, parent, options = {}) {
     )
 
   lakePanel = new Surface(
-    100,
-    100,
+    140,
+    140,
     Surface.SurfaceShape.Flat
   )
   lakePanel.setAngle(
@@ -61,14 +62,52 @@ function init(bundle, parent, options = {}) {
   );
 
   plasticBottlePanel = new Surface(
-    100,
-    100,
+    140,
+    140,
     Surface.SurfaceShape.Flat
   )
   plasticBottlePanel.setAngle(
     1,
     -0.6
   );
+
+  cementInfoPanel = new Surface(
+    140,
+    140,
+      Surface.SurfaceShape.Flat
+  )
+  cementInfoPanel.setAngle(
+    -0.4,
+    0.2
+  );
+
+  portalButton2 = new Surface(
+    440,
+    100,
+    Surface.SurfaceShape.Flat
+  )
+  portalButton2.setAngle(
+   -0.4,
+    0.5
+    )
+
+  constructionInfoPanel = new Surface(
+    140,
+    140,
+    Surface.SurfaceShape.Flat
+    )
+  constructionInfoPanel.setAngle(
+    
+    3, 0.1, 0.05
+    )
+  constructionInfoPanel2 = new Surface(
+    140,
+    140,
+    Surface.SurfaceShape.Flat
+    )
+  constructionInfoPanel2.setAngle(
+    0.6, -0.1
+    )
 }
 
 class surfaceModule extends Module{
@@ -86,6 +125,12 @@ class surfaceModule extends Module{
       return lakePanel.resize(width, height)
       case "Portal_3":
       return plasticBottlePanel.resize(width, height)
+      case "Portal_4":
+      return cementInfoPanel.resize(width, height)
+      case "Portal_5":
+      return constructionInfoPanel.resize(width, height)
+      case "Portal_6":
+      return constructionInfoPanel2.resize(width, height)
     }
   }
 
@@ -103,7 +148,7 @@ class surfaceModule extends Module{
 
   portalButtonGaze(props){
     r360.renderToSurface(
-    r360.createRoot('PortalButton', {id:"Button", panel:props }),
+    r360.createRoot('PortalButton1', {id:"Button", panel:props }),
     portalButton
   )}
 
@@ -111,6 +156,30 @@ class surfaceModule extends Module{
     r360.renderToSurface(
       r360.createRoot('InfoPanel',{id:"Portal_3", panel:props} ),
       plasticBottlePanel
+    )
+  }
+  cementPanel(props){
+    r360.renderToSurface(
+      r360.createRoot('InfoPanel',{id:"Portal_4", panel:props} ),
+      cementInfoPanel
+    )
+  }
+  clickForCementButton(props){
+    r360.renderToSurface(
+    r360.createRoot('PortalButton2', {id:"Button2", panel:props }),
+    portalButton2
+    )
+  }
+  constructionInfo(props){
+     r360.renderToSurface(
+    r360.createRoot('InfoPanel', {id:"Portal_5", panel:props }),
+    constructionInfoPanel
+    )
+  }
+  constructionInfo2(props){
+     r360.renderToSurface(
+    r360.createRoot('InfoPanel', {id:"Portal_6", panel:props }),
+    constructionInfoPanel2
     )
   }
 
