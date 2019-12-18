@@ -11,22 +11,22 @@ import {
 } from 'react-360';
 import GazeButton from 'react-360-gaze-button';
 import Portals from '../data/data'
-
+const {AudioModule} = NativeModules;
 const surfaceModule = NativeModules.surfaceModule;
 
 
-
-
 class PortalButton1 extends React.Component {
-
 
 state = {
   gazed: false,
   portal: Portals.Intro
 }
 setGazed=(Portals)=>{
-	console.log("destroy ", Portals)
-	
+   AudioModule.playEnvironmental({
+          source: asset('/audio/waterway2.wav'),
+          volume: 0.3, 
+          });  
+
 surfaceModule.destroyPanel([11,21,31])//These are the panel numbers from r360 _rootSurfaces
 Environment.setBackgroundImage(asset('spillway.jpg'))
 surfaceModule.plasticBottleInfo({...Portals})
@@ -38,6 +38,7 @@ surfaceModule.clickForCementButton({...Portals})
     return (
 
       <View>
+    
        <View style={styles.portalButton}>
         
         <GazeButton 
@@ -49,7 +50,8 @@ surfaceModule.clickForCementButton({...Portals})
             {  `ENTER NEXT PORTAL IN ${remainingTime}ms` }
             </Text>
           </View> ) }
-        /></View>
+        />
+        </View>
       </View>
     )
   }

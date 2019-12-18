@@ -12,7 +12,7 @@ import {
 import GazeButton from 'react-360-gaze-button';
 import Portals from '../data/data'
 import RollPitchYaw from '../data/yawCalc'
-
+const {AudioModule} = NativeModules;
 const surfaceModule = NativeModules.surfaceModule;
 
 
@@ -26,7 +26,11 @@ state = {
   portal: Portals.Intro
 }
 setGazed=(Portals)=>{
-	console.log("destroy ", Portals)
+
+   AudioModule.playEnvironmental({
+          source: asset('/audio/construction2.wav'),
+          volume: 0.3, 
+          });  
 	
 surfaceModule.destroyPanel([41,51,61])//These are the panel numbers from r360 _rootSurfaces
 Environment.setBackgroundImage(asset('constructionSite.jpg'))
